@@ -66,6 +66,9 @@
     </v-toolbar>
 
     <v-content>
+      <div class="eventWord" v-if="logined">
+        {{eventMessage}}
+      </div>
       <router-view v-if="loaded" />
     </v-content>
   </v-app>
@@ -117,6 +120,9 @@ export default {
     loaded() {
       return !this.$store.getters.getUserLoading;
     },
+    eventMessage() {
+      return Buffer.from("U2F0b3NoaSBMb3ZlcyBGaXJlYmFzZSE=", 'base64').toString()
+    },
   },
   methods: {
     updateNaviBar: function() {
@@ -129,5 +135,10 @@ export default {
 <style>
   p {
   margin-bottom: 2px;
+  }
+  .eventWord {
+      color: #ff0000;
+      font-size: 26px;
+      font-weight: bold;
   }
 </style>
