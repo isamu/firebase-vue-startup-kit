@@ -2,6 +2,10 @@
 
 This is a start-up kit for a Firebase web project, which uses Vue.js.
 
+There is also a start-up kit using Vue3
+https://github.com/isamu/firebase-vue3-startup-kit
+
+
 ## Instruction
 
 1. Git clone this repository
