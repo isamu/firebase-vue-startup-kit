@@ -24,6 +24,7 @@ https://github.com/isamu/firebase-vue3-startup-kit
 This project uses Plotly.js, you need to install that using:
 ### `npm install plotly.js`
 ### `npm install plotly.js-dist`
+### `npm install vue-plotly`
 
 ## Available Scripts
 
