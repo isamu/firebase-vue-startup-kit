@@ -26,19 +26,19 @@ export default {
   },
   name: 'Top',
   setup() {
-    const chartType = ref('bar');
+    const chartType = ref('');
     const chartData = ref({});
     const chartLayout = ref({});
 
-    onMounted(() => {
-      renderCharts();
-    });
-
     watch(chartType, ()=>{
-      renderCharts();
+      updateChart();
     })
 
-    const renderCharts = () => {
+    onMounted(() => {
+      chartType.value = 'bar';
+    });
+
+    const updateChart = () => {
       if(chartType.value === 'bar') {
         chartData.value = [{
           x: ['Category 1', 'Category 2', 'Category 3'],
