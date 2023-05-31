@@ -20,25 +20,23 @@
 
 <script>
 import Plotly from 'plotly.js-dist';
+import { ref, watch, onMounted } from 'vue';
 
 export default {
   name: 'Top',
-  data() {
-    return {
-      chartType: 'bar', // Initial chart type
-    }
-  },
-  mounted() {
-    this.renderCharts();
-  },
-  watch: {
-    chartType() {
-      this.renderCharts();
-    }
-  },
-  methods: {
-    renderCharts() {
-      if(this.chartType === 'bar') {
+  setup() {
+    const chartType = ref('bar');
+
+    onMounted(() => {
+      renderCharts();
+    });
+    
+    watch(chartType, ()=>{
+      renderCharts();
+    })
+
+    const renderCharts = () => {
+      if(chartType.value === 'bar') {
         let barData = [{
           x: ['Category 1', 'Category 2', 'Category 3'],
           y: [10, 15, 7],
@@ -54,7 +52,7 @@ export default {
         Plotly.newPlot('myDiv', barData, barLayout);
       }
       
-      if(this.chartType === 'pie') {
+      if(chartType.value === 'pie') {
         let pieData = [{
           values: [19, 26, 55],
           labels: ['Residential', 'Non-Residential', 'Utility'],
@@ -70,7 +68,7 @@ export default {
         Plotly.newPlot('myDivPie', pieData, pieLayout);
       }
 
-      if(this.chartType === 'line') {
+      if(chartType.value === 'line') {
         let lineData = [{
           x: [1, 2, 3, 4],
           y: [10, 15, 13, 17],
@@ -85,7 +83,11 @@ export default {
 
         Plotly.newPlot('myDivLine', lineData, lineLayout);
       }
-    }
+    };
+
+    return {
+      chartType
+    };
   }
 };
 </script>
