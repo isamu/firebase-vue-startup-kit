@@ -84,8 +84,8 @@ export default {
     };
     const test = async () => {
       console.log("test");
-      const system = "Always respond with JSON";
-      const query = "TSLA's historical price from 2011 to 2020";
+      const system = "Always respond in JSON format";
+      const query = "The historical GDP of United states form 2011 to 2020";
       const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query)}`;
   
       try {

@@ -31,7 +31,7 @@ def hello():
     messages.append({"role":"user", "content":query or "Hello."})
     response = openai.ChatCompletion.create(model=OPENAI_API_MODEL, messages=messages, temperature=OPENAI_TEMPERATURE)
     headers = {'Access-Control-Allow-Origin': '*'}
-    return jsonify(response['choices'][0]['message']), 200, headers
+    return jsonify(response['choices'][0]['message']['content']), 200, headers
 
 if (__name__ == '__main__'):
     app.run(port=8081, host="0.0.0.0")
