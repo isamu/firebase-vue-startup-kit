@@ -12,3 +12,5 @@ def hello_world():
 def hello():
     return jsonify(message='Hello, world!')
 
+if (__name__ == '__main__'):
+    app.run(port=8081)
