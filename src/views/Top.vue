@@ -84,7 +84,7 @@ export default {
     };
     const test = async () => {
       console.log("test");
-      const system = "Always respond as an list of objects with attributes 'label' and 'value' in JSON format";
+      const system = "Respond as an list of objects with attributes 'label' and 'value' in JSON format. Always respond only in JSON without any words around it";
       const query = "The historical GDP of United states form 2011 to 2020";
       const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query)}`;
   
@@ -97,6 +97,18 @@ export default {
         
         const data = await response.json();
         console.log(data);
+        const items = JSON.parse(data)
+        chartData.value = [{
+          x: items.map(item => item.label),
+          y: items.map(item => item.value),
+          type: 'bar'
+        }];
+
+        chartLayout.value = {
+          title: 'Bar Chart',
+          width: 500,
+          height: 500
+        };
       } catch (error) {
         console.error(error);
         throw error;

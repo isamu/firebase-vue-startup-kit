@@ -8,7 +8,7 @@ import os
 load_dotenv() # Load default environment variables (.env)
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY", "")
 OPENAI_API_MODEL = os.getenv("OPENAI_API_MODEL", "gpt-3.5-turbo")
-OPENAI_TEMPERATURE = float(os.getenv("OPENAI_TEMPERATURE", 0.7))
+OPENAI_TEMPERATURE = float(os.getenv("OPENAI_TEMPERATURE", 0.2))
 assert OPENAI_API_KEY, "OPENAI_API_KEY environment variable is missing from .env"
 openai.api_key = OPENAI_API_KEY
 
