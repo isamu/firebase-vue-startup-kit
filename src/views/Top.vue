@@ -19,7 +19,6 @@ export default {
   },
   name: 'Top',
   setup() {
-    const chartType = ref('');
     const chartData = ref(null);
     const chartLayout = ref({});
     const query = ref('The historical GDP of United states form 2011 to 2020');
@@ -58,7 +57,7 @@ export default {
     };
 
     return {
-      chartType, chartData, chartLayout, askLLM, query
+      chartData, chartLayout, askLLM, query
     };
   }
 };
