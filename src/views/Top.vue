@@ -10,6 +10,7 @@
     <label>
       <input type="radio" value="line" v-model="chartType"> Line Chart
     </label>
+    <button v-on:click="test">Test</button>
     <div class="chart-container">
       <Plotly :data="chartData" :layout="chartLayout" :display-mode-bar="false" />
     </div>
@@ -81,9 +82,29 @@ export default {
         };
       }
     };
+    const test = async () => {
+      console.log("test");
+      const system = "Always respond with JSON";
+      const query = "TSLA's historical price from 2011 to 2020";
+      const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query)}`;
+  
+      try {
+        const response = await fetch(url);
+        
+        if (!response.ok) {
+          throw new Error('Error fetching data');
+        }
+        
+        const data = await response.json();
+        console.log(data);
+      } catch (error) {
+        console.error(error);
+        throw error;
+      }
+    };
 
     return {
-      chartType, chartData, chartLayout
+      chartType, chartData, chartLayout, test
     };
   }
 };
