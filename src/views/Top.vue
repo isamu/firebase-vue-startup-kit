@@ -1,8 +1,10 @@
 <template>
-  <div>
+  <div class="mx-3 my-1">
     <h2>Firebase vue Startup kit</h2>
-    <p>{{ query }}</p>
-    <button v-on:click="askLLM">Ask</button>
+    <div>
+      <textarea v-model="query" rows="4" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"></textarea>
+    </div>
+    <button v-on:click="askLLM" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">Ask</button>
     <div class="chart-container">
       <Plotly v-if="chartData" :data="chartData" :layout="chartLayout" :display-mode-bar="false" />
     </div>
