@@ -19,9 +19,14 @@ def hello_world():
     name = request.args.get('name')
     return f"<p>Hello, {name or 'World'}!</p>"
 
+# http://localhost:8081/api/chat?query=TSLA%27s+historical+revenue+from+2011+to+2020&system=Always+respond+in+JSON+format
+
 @app.route("/api/chat")
 def hello():
     messages = []
+    system = request.args.get('system')
+    if system:
+        messages.append({"role":"system", "content":system})
     query = request.args.get('query')
     messages.append({"role":"user", "content":query or "Hello."})
     response = openai.ChatCompletion.create(model=OPENAI_API_MODEL, messages=messages, temperature=OPENAI_TEMPERATURE)
