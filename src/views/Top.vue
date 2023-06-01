@@ -1,15 +1,7 @@
 <template>
   <div>
     <h2>Firebase vue Startup kit</h2>
-    <label>
-      <input type="radio" value="bar" v-model="chartType"> Bar Chart
-    </label>
-    <label>
-      <input type="radio" value="pie" v-model="chartType"> Pie Chart
-    </label>
-    <label>
-      <input type="radio" value="line" v-model="chartType"> Line Chart
-    </label>
+    <p>{{ query }}</p>
     <button v-on:click="test">Test</button>
     <div class="chart-container">
       <Plotly :data="chartData" :layout="chartLayout" :display-mode-bar="false" />
@@ -116,7 +108,7 @@ export default {
     };
 
     return {
-      chartType, chartData, chartLayout, test
+      chartType, chartData, chartLayout, test, query
     };
   }
 };
