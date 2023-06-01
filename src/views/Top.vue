@@ -30,6 +30,8 @@ export default {
     const chartType = ref('');
     const chartData = ref({});
     const chartLayout = ref({});
+    const query = ref('The historical GDP of United states form 2011 to 2020');
+    const system = "Respond as an list of objects with attributes 'label' and 'value' in JSON format. Always respond only in JSON without any words around it";
 
     watch(chartType, ()=>{
       updateChart();
@@ -84,9 +86,7 @@ export default {
     };
     const test = async () => {
       console.log("test");
-      const system = "Respond as an list of objects with attributes 'label' and 'value' in JSON format. Always respond only in JSON without any words around it";
-      const query = "The historical GDP of United states form 2011 to 2020";
-      const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query)}`;
+      const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query.value)}`;
   
       try {
         const response = await fetch(url);
@@ -105,7 +105,7 @@ export default {
         }];
 
         chartLayout.value = {
-          title: 'Bar Chart',
+          title: query.value,
           width: 500,
           height: 500
         };
