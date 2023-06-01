@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
 @app.route("/")
 def hello_world():
-    return "<p>Hello, World!</p>"
+    name = request.args.get('name')
+    return f"<p>Hello, {name or 'World'}!</p>"
 
 @app.route("/api/hello")
 def hello():
