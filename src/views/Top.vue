@@ -2,7 +2,7 @@
   <div>
     <h2>Firebase vue Startup kit</h2>
     <p>{{ query }}</p>
-    <button v-on:click="test">Test</button>
+    <button v-on:click="askLLM">Ask</button>
     <div class="chart-container">
       <Plotly :data="chartData" :layout="chartLayout" :display-mode-bar="false" />
     </div>
@@ -76,8 +76,8 @@ export default {
         };
       }
     };
-    const test = async () => {
-      console.log("test");
+    const askLLM = async () => {
+      console.log("fetching...");
       const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query.value)}`;
   
       try {
@@ -108,7 +108,7 @@ export default {
     };
 
     return {
-      chartType, chartData, chartLayout, test, query
+      chartType, chartData, chartLayout, askLLM, query
     };
   }
 };
