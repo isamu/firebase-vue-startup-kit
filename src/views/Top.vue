@@ -84,7 +84,7 @@ export default {
     };
     const test = async () => {
       console.log("test");
-      const system = "Always respond in JSON format";
+      const system = "Always respond as an list of objects with attributes 'label' and 'value' in JSON format";
       const query = "The historical GDP of United states form 2011 to 2020";
       const url = `http://localhost:8081/api/chat?system=${encodeURIComponent(system)}&query=${encodeURIComponent(query)}`;
   
